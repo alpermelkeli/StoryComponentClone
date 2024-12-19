@@ -29,9 +29,67 @@ Replace Tag with the latest version (e.g., 1.0.0)
 
 Usage
 
+Story Data Class
+```kotlin
+data class Story(
+    val profilePhoto: String,    // URL of the user's profile photo
+    val username: String,        // Username of the story owner
+    val image: String           // URL of the story image
+)
+```
+Stories Composable
+```kotlin
+Stories(
+    onReturnBack = { 
+        // Handle back navigation
+    },
+    stories = listOf(
+        Pair(
+            "User1",
+            listOf(
+                Story(
+                    profilePhoto = "https://example.com/profile1.jpg",
+                    username = "User1",
+                    image = "https://example.com/story1.jpg"
+                ),
+                // More stories for User1...
+            )
+        ),
+        // More users with their stories...
+    )
+)
+```
+Example Implementation
+```kotlin
+@Composable
+fun StoryScreen() {
+    val storiesList = listOf(
+        Pair(
+            "John Doe",
+            listOf(
+                Story(
+                    profilePhoto = "https://example.com/john-profile.jpg",
+                    username = "John Doe",
+                    image = "https://example.com/john-story1.jpg"
+                ),
+                Story(
+                    profilePhoto = "https://example.com/john-profile.jpg",
+                    username = "John Doe",
+                    image = "https://example.com/john-story2.jpg"
+                )
+            )
+        ),
+        // Add more users and their stories
+    )
 
-Features
-
+    Stories(
+        onReturnBack = {
+            // Navigate back
+        },
+        stories = storiesList
+    )
+}
+```
 
 Contributing
 
