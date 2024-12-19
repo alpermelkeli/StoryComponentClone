@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "InstagramStoryComponentClone"
 include(":app")
- 
+include(":story-screen")

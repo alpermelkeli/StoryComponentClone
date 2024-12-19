@@ -29,16 +29,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.alpermelkeli.instagramstorycomponentclone.components.ShimmerEffectImage
 import com.alpermelkeli.instagramstorycomponentclone.components.StoryTopBar
-import com.alpermelkeli.instagramstorycomponentclone.repository.storiesList
+import com.alpermelkeli.instagramstorycomponentclone.repository.Story
 import kotlinx.coroutines.launch
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun Story(onBackClicked:()->Unit){
+fun Stories(onReturnBack:()->Unit, stories : List<Pair<String,List<Story>>>){
     val scope = rememberCoroutineScope()
-
-    val stories = storiesList
 
     var currentPage by remember{ mutableIntStateOf(0) }
 
@@ -69,7 +67,7 @@ fun Story(onBackClicked:()->Unit){
                     currentStoryIndex = currentPage,
                     totalStories = targetStoriesList.size,
                     username = targetStoriesList[0].username,
-                    onBackClicked = {onBackClicked()},
+                    onBackClicked = {onReturnBack()},
                     profilePhoto = targetStoriesList[0].profilePhoto,
                     onTimeFinished = {
                         if (currentPage < targetStoriesList.size - 1) {
@@ -80,7 +78,7 @@ fun Story(onBackClicked:()->Unit){
                                 scope.launch { pagerState.animateScrollToPage(pagerState.targetPage + 1) }
                             }
                             else {
-                                onBackClicked()
+                                onReturnBack()
                             }
                         }
                     }
