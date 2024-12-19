@@ -22,10 +22,10 @@ Add this in your app's build.gradle or build.gradle.kts:
 
 ```kotlin
 dependencies {
-    implementation("com.github.alpermelkeli:StoryComponentClone:Tag")
+    implementation("com.github.alpermelkeli:StoryComponentClone:1.0.1")
 }
 ```
-Replace Tag with the latest version (e.g., 1.0.0)
+Replace Tag with the latest version (e.g., 1.0.1)
 
 Usage
 
